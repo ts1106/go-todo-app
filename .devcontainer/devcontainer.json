@@ -1,0 +1,16 @@
+{
+    "name": "go-todo-app",
+    "dockerComposeFile": ["./docker-compose.dev.yml"],
+    "service": "golang",
+    "workspaceFolder": "/workspace",
+    "remoteUser": "golang",
+
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "go.useLanguageServer": true
+            },
+            "extensions": ["golang.Go"]
+        }
+    }
+}
