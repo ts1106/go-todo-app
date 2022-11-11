@@ -12,5 +12,5 @@ func main() {
 }
 
 func simpleHandler(w http.ResponseWriter, _ *http.Request) {
-	fmt.Fprintf(w, "hello world!")
+	fmt.Fprint(w, "hello world!")
 }
