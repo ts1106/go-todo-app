@@ -21,18 +21,19 @@ func (s TodoTitle) Validate() {
 }
 
 type CreateTodoRequest struct {
-	Title TodoTitle `json:"title"`
+	Title TodoTitle `json:"title,omitempty"`
 }
 
 type UpdateTodoRequest struct {
-	Title     TodoTitle `json:"title"`
-	Completed bool      `json:"completed"`
+	Id        uuid.UUID  `json:"id,omitempty"`
+	Title     *TodoTitle `json:"title,omitempty"`
+	Completed *bool      `json:"completed,omitempty"`
 }
 
 type TodoServer interface {
 	CreateTodo(context.Context, CreateTodoRequest) (*Todo, error)
 	GetTodo(context.Context, uuid.UUID) (*Todo, error)
-	ListTodo(context.Context) (*[]Todo, error)
+	ListTodo(context.Context) ([]*Todo, error)
 	UpdateTodo(context.Context, UpdateTodoRequest) (*Todo, error)
 	DeleteTodo(context.Context, uuid.UUID) error
 	mustEmbedUnimplementedTodoServer()
